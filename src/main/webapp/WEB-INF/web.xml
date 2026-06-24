@@ -3,6 +3,20 @@
   
 
     <display-name>playground</display-name>
+    
+    <!-- Root Spring Context (Service, DB, MyBatis) -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+		    classpath:/egovframework/spring/context-datasource.xml
+		    classpath:/egovframework/spring/context-common.xml
+		    classpath:/egovframework/spring/context-mapper.xml
+		    
+		</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <!-- *.do 요청을 Spring이 받음 -->
     <servlet>
