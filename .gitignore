@@ -1,0 +1,36 @@
+# ===== 빌드 결과 (필수) =====
+target/
+bin/
+build/
+*.class
+*.war
+*.jar
+*.ear
+
+# ===== Eclipse / eGovFrame (권장) =====
+.classpath
+.project
+.settings/
+.factorypath
+.externalToolBuilders/
+*.launch
+.springBeans
+.sts4-cache/
+.apt_generated/
+
+# ===== 로그 / OS =====
+*.log
+hs_err_pid*
+replay_pid*
+Thumbs.db
+Desktop.ini
+
+# ===== 비밀 / 로컬 설정 (필수) =====
+src/main/resources/egovframework/egovProps/globals.properties
+globals.properties
+**/globals.properties
+
+# ===== IDE 기타 =====
+.idea/
+*.iml
+.vscode/
