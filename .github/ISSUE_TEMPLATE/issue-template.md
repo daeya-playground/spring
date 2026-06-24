@@ -1,17 +1,10 @@
 ---
-name: issue template
+name: Issue Template
 about: Describe this issue template's purpose here.
 title: ''
 labels: ''
 assignees: daeya0406
 
----
-
----
-name: Issue
-about: playground 연습 단위 기록
-title: '[playground] '
-labels: learning
 ---
 
 ## 🎯 목표
