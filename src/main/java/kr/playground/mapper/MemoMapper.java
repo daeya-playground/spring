@@ -9,4 +9,7 @@ import egovframework.rte.psl.dataaccess.mapper.Mapper;
 public interface MemoMapper {
 
     List<Map<String, Object>> selectMemoList();
+    void insertMemo(Map<String, Object> param);
+    void updateMemo(Map<String, Object> param);
+    void deleteMemo(int id);
 }

@@ -4,10 +4,28 @@
 <mapper namespace="kr.playground.mapper.MemoMapper">
 
     <select id="selectMemoList" resultType="map">
-        SELECT ID      AS id
-             , CONTENT AS content
+        SELECT ID      AS "id"
+             , CONTENT AS "content"
         FROM MEMO
         ORDER BY ID
     </select>
+    
+    <insert id="insertMemo" parameterType="map">
+    	INSERT INTO MEMO (ID, CONTENT)
+    	VALUES (
+    		(SELECT COALESCE(MAX(ID), 0) + 1 FROM MEMO),
+    		#{content}
+    	)
+    </insert>
+    
+    <update id="updateMemo" parameterType="map">
+    	UPDATE MEMO
+    	   SET CONTENT = #{content}
+    	 WHERE ID = #{id}
+    </update>
+    
+    <delete id="deleteMemo" parameterType="int">
+    	DELETE FROM MEMO WHERE ID = #{id}
+    </delete>
 
 </mapper>
