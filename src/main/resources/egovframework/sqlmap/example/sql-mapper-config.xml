@@ -5,4 +5,7 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
+    <typeAliases>
+	    <typeAlias alias="memoVO" type="kr.playground.vo.MemoVO"/>
+	</typeAliases>
 </configuration>

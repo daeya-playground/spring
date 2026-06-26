@@ -1,14 +1,13 @@
 package kr.playground.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import kr.playground.mapper.MemoMapper;
+import kr.playground.vo.MemoVO;
 
 @Service("memoService")
 public class MemoService {
@@ -16,21 +15,21 @@ public class MemoService {
     @Resource(name = "memoMapper")
     private MemoMapper memoMapper;
 
-    public List<Map<String, Object>> selectMemoList() {
+    public List<MemoVO> selectMemoList() {
         return memoMapper.selectMemoList();
     }
     
     public void insertMemo(String content) {
-    	Map<String, Object> param = new HashMap<>();
-    	param.put("content", content);
-    	memoMapper.insertMemo(param);
+        MemoVO memo = new MemoVO();
+    	memo.setContent(content);
+    	memoMapper.insertMemo(memo);
     }
     
     public void updateMemo(int id, String content) {
-    	Map<String, Object> param = new HashMap<>();
-    	param.put("id", id);
-    	param.put("content", content);
-    	memoMapper.updateMemo(param);
+    	MemoVO memo = new MemoVO();
+    	memo.setId(id);
+    	memo.setContent(content);
+    	memoMapper.updateMemo(memo);
     }
     
     public void deleteMemo(int id) {

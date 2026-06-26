@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.playground.service.MemoService;
+import kr.playground.vo.MemoVO;
 
 @Controller
 public class MemoController {
@@ -20,7 +21,7 @@ public class MemoController {
 
     @RequestMapping(value = "/memo/list.do")
     public String memoList(Model model) {
-        List<Map<String, Object>> list = memoService.selectMemoList();
+        List<MemoVO> list = memoService.selectMemoList();
         model.addAttribute("memoList", list);
         return "memo/list";
     }

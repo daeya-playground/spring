@@ -3,14 +3,14 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.playground.mapper.MemoMapper">
 
-    <select id="selectMemoList" resultType="map">
+    <select id="selectMemoList" resultType="MemoVO">
         SELECT ID      AS "id"
              , CONTENT AS "content"
         FROM MEMO
         ORDER BY ID
     </select>
     
-    <insert id="insertMemo" parameterType="map">
+    <insert id="insertMemo" parameterType="MemoVO">
     	INSERT INTO MEMO (ID, CONTENT)
     	VALUES (
     		(SELECT COALESCE(MAX(ID), 0) + 1 FROM MEMO),
@@ -18,7 +18,7 @@
     	)
     </insert>
     
-    <update id="updateMemo" parameterType="map">
+    <update id="updateMemo" parameterType="MemoVO">
     	UPDATE MEMO
     	   SET CONTENT = #{content}
     	 WHERE ID = #{id}
