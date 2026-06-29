@@ -22,6 +22,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
+		    classpath:/egovframework/spring/context-properties.xml
 		    classpath:/egovframework/spring/context-datasource.xml
 		    classpath:/egovframework/spring/context-common.xml
 		    classpath:/egovframework/spring/context-mapper.xml

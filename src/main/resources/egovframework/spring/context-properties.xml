@@ -11,20 +11,4 @@
     <context:property-placeholder
         location="classpath:/egovframework/egovProps/globals.properties"/>
 
-    <bean name="propertiesService"
-	    class="egovframework.rte.fdl.property.impl.EgovPropertyServiceImpl"
-	    destroy-method="destroy">
-	    <property name="properties">
-	        <map>
-	            <entry key="pageUnit" value="10"/>
-	            <entry key="pageSize" value="10"/>
-	        </map>
-	    </property>
-	    <property name="extFileName">
-	        <set>
-	            <value>classpath:/egovframework/egovProps/globals.properties</value>
-	        </set>
-	    </property>
-	</bean>
-
 </beans>
