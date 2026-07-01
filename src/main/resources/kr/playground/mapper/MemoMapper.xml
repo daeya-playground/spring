@@ -6,7 +6,9 @@
     <select id="selectMemoList" resultType="MemoVO">
         SELECT ID      AS "id"
              , CONTENT AS "content"
+             , DEL_YN  AS "delYn"
         FROM MEMO
+        WHERE DEL_YN = 'N'
         ORDER BY ID
     </select>
     
@@ -25,7 +27,10 @@
     </update>
     
     <delete id="deleteMemo" parameterType="int">
-    	DELETE FROM MEMO WHERE ID = #{id}
+    	UPDATE MEMO
+    	   SET DEL_YN = 'Y'
+    	 WHERE ID = #{id}
+    	   AND DEL_YN = 'N'
     </delete>
 
 </mapper>
