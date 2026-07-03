@@ -4,31 +4,39 @@
 <mapper namespace="kr.playground.mapper.MemoMapper">
 
     <select id="selectMemoList" resultType="MemoVO">
-        SELECT ID      AS "id"
-             , CONTENT AS "content"
-             , DEL_YN  AS "delYn"
+        SELECT ID         AS "id"
+        	 , TITLE      AS "title"
+             , CONTENT    AS "content"
+             , STATUS     AS "status"
+             , CREATED_AT AS "createdAt"
+             , UPDATED_AT AS "updatedAt"
+             , DEL_YN     AS "delYn"
         FROM MEMO
         WHERE DEL_YN = 'N'
         ORDER BY ID
     </select>
     
     <insert id="insertMemo" parameterType="MemoVO">
-    	INSERT INTO MEMO (ID, CONTENT)
+    	INSERT INTO MEMO (ID, TITLE, CONTENT, STATUS)
     	VALUES (
     		(SELECT COALESCE(MAX(ID), 0) + 1 FROM MEMO),
-    		#{content}
+    		#{title}, #{content}, #{status}
     	)
     </insert>
     
     <update id="updateMemo" parameterType="MemoVO">
     	UPDATE MEMO
-    	   SET CONTENT = #{content}
+    	   SET TITLE = #{title}
+    	   	   , CONTENT = #{content}
+    	   	   , STATUS = #{status}
+    	   	   , UPDATED_AT = CURRENT_TIMESTAMP
     	 WHERE ID = #{id}
     </update>
     
     <delete id="deleteMemo" parameterType="int">
     	UPDATE MEMO
     	   SET DEL_YN = 'Y'
+    	       , UPDATED_AT = CURRENT_TIMESTAMP
     	 WHERE ID = #{id}
     	   AND DEL_YN = 'N'
     </delete>

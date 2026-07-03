@@ -30,12 +30,12 @@ public class MemoApiController {
     
     @PostMapping
     public void insert (@RequestBody MemoVO memo){
-    	memoService.insertMemo(memo.getContent());
+    	memoService.insertMemo(memo.getTitle(), memo.getContent(), memo.getStatus());
     }
     
     @PutMapping("/{id}")
     public void update (@PathVariable int id, @RequestBody MemoVO memo) {
-    	memoService.updateMemo(id, memo.getContent());
+    	memoService.updateMemo(id, memo.getTitle(), memo.getContent(), memo.getStatus());
     }
     
     @DeleteMapping("/{id}")

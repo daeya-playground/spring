@@ -19,16 +19,20 @@ public class MemoService {
         return memoMapper.selectMemoList();
     }
     
-    public void insertMemo(String content) {
+    public void insertMemo(String title, String content, String status) {
         MemoVO memo = new MemoVO();
+    	memo.setTitle(title);
     	memo.setContent(content);
+    	memo.setStatus(status);
     	memoMapper.insertMemo(memo);
     }
     
-    public void updateMemo(int id, String content) {
+    public void updateMemo(int id, String title, String content, String status) {
     	MemoVO memo = new MemoVO();
     	memo.setId(id);
+    	memo.setTitle(title);
     	memo.setContent(content);
+    	memo.setStatus(status);
     	memoMapper.updateMemo(memo);
     }
     

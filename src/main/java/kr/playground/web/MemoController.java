@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,13 +28,13 @@ public class MemoController {
     }
     
     @RequestMapping("/memo/insert.do")
-    public String insert(@RequestParam String content) {
-        memoService.insertMemo(content);
+    public String insert(@RequestBody MemoVO memo) {
+    	memoService.insertMemo(memo.getTitle(), memo.getContent(), memo.getStatus());
         return "redirect:/memo/list.do";
     }
     @RequestMapping("/memo/update.do")
-    public String update(@RequestParam int id, @RequestParam String content) {
-        memoService.updateMemo(id, content);
+    public String update(@RequestParam int id, @RequestBody MemoVO memo) {
+    	memoService.updateMemo(id, memo.getTitle(), memo.getContent(), memo.getStatus());
         return "redirect:/memo/list.do";
     }
     @RequestMapping("/memo/delete.do")
