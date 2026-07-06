@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.playground.service.MemoService;
@@ -24,8 +25,8 @@ public class MemoApiController {
     private MemoService memoService;
 
     @GetMapping
-    public List<MemoVO> list() {
-        return memoService.selectMemoList();
+    public List<MemoVO> list(@RequestParam(required = false) String status) {
+        return memoService.selectMemoList(status);
     }
     
     @PostMapping

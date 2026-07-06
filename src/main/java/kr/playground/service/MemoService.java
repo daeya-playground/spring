@@ -15,8 +15,12 @@ public class MemoService {
     @Resource(name = "memoMapper")
     private MemoMapper memoMapper;
 
-    public List<MemoVO> selectMemoList() {
-        return memoMapper.selectMemoList();
+    public List<MemoVO> selectMemoList(String status) {
+    	MemoVO param = new MemoVO();
+    	if (status != null && !status.isEmpty()) {
+            param.setStatus(status);
+        }
+        return memoMapper.selectMemoList(param);
     }
     
     public void insertMemo(String title, String content, String status) {

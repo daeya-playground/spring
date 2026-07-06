@@ -9,7 +9,7 @@ import kr.playground.vo.MemoVO;
 @Mapper("memoMapper")
 public interface MemoMapper {
 	
-	List<MemoVO> selectMemoList();
+	List<MemoVO> selectMemoList(MemoVO Param);
     void insertMemo(MemoVO param);
     void updateMemo(MemoVO param);
     void deleteMemo(int id);

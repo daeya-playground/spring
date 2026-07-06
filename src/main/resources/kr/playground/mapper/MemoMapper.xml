@@ -13,6 +13,9 @@
              , DEL_YN     AS "delYn"
         FROM MEMO
         WHERE DEL_YN = 'N'
+        <if test="status != null and status != ''">
+        	AND STATUS = #{status}
+        </if>
         ORDER BY ID
     </select>
     

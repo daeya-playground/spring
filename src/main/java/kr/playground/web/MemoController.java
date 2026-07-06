@@ -22,7 +22,7 @@ public class MemoController {
 
     @RequestMapping(value = "/memo/list.do")
     public String memoList(Model model) {
-        List<MemoVO> list = memoService.selectMemoList();
+        List<MemoVO> list = memoService.selectMemoList(null);
         model.addAttribute("memoList", list);
         return "memo/list";
     }
