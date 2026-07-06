@@ -17,9 +17,7 @@ public class MemoService {
 
     public List<MemoVO> selectMemoList(String status) {
     	MemoVO param = new MemoVO();
-    	if (status != null && !status.isEmpty()) {
-            param.setStatus(status);
-        }
+        param.setStatus(status);
         return memoMapper.selectMemoList(param);
     }
     
