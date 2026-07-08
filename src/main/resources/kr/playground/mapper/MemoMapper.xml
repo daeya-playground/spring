@@ -17,7 +17,18 @@
         	AND STATUS = #{status}
         </if>
         ORDER BY ID
+        LIMIT #{size} OFFSET #{offset}
     </select>
+
+	<select id="selectMemoCount" resultType="int">
+		SELECT COUNT(*)
+			FROM MEMO
+			WHERE DEL_YN = 'N'
+	        <if test="status != null and status != ''">
+	        	AND STATUS = #{status}
+	        </if>
+	</select>
+    
     
     <insert id="insertMemo" parameterType="MemoVO">
     	INSERT INTO MEMO (ID, TITLE, CONTENT, STATUS)

@@ -31,6 +31,29 @@ SELECT ID, TITLE, CONTENT, STATUS, CREATED_AT, UPDATED_AT, DEL_YN
  WHERE DEL_YN = 'N'
  ORDER BY ID;
 
+-- DB 추가
+INSERT INTO MEMO (ID, TITLE, CONTENT, STATUS) VALUES
+(5,  '테스트 메모 5',  '페이지네이션 연습', 'READY'),
+(6,  '테스트 메모 6',  '페이지네이션 연습', 'ING'),
+(7,  '테스트 메모 7',  '페이지네이션 연습', 'DONE'),
+(8,  '테스트 메모 8',  '페이지네이션 연습', 'HOLD'),
+(9,  '테스트 메모 9',  '페이지네이션 연습', 'READY'),
+(10, '테스트 메모 10', '페이지네이션 연습', 'ING'),
+(11, '테스트 메모 11', '페이지네이션 연습', 'READY'),
+(12, '테스트 메모 12', '페이지네이션 연습', 'ING'),
+(13, '테스트 메모 13', '페이지네이션 연습', 'DONE'),
+(14, '테스트 메모 14', '페이지네이션 연습', 'HOLD'),
+(15, '테스트 메모 15', '페이지네이션 연습', 'READY'),
+(16, '테스트 메모 16', '페이지네이션 연습', 'ING'),
+(17, '테스트 메모 17', '페이지네이션 연습', 'DONE'),
+(18, '테스트 메모 18', '페이지네이션 연습', 'HOLD'),
+(19, '테스트 메모 19', '페이지네이션 연습', 'READY'),
+(20, '테스트 메모 20', '페이지네이션 연습', 'ING'),
+(21, '테스트 메모 21', '페이지네이션 연습', 'READY'),
+(22, '테스트 메모 22', '페이지네이션 연습', 'DONE'),
+(23, '테스트 메모 23', '페이지네이션 연습', 'HOLD'),
+(24, '테스트 메모 24', '페이지네이션 연습', 'READY'),
+(25, '테스트 메모 25', '페이지네이션 연습', 'ING');
 
  ----------------------------------
  --------- 동작확인용 쿼리 ----------
@@ -64,3 +87,17 @@ UPDATE MEMO
    SET DEL_YN = 'Y'
      , UPDATED_AT = CURRENT_TIMESTAMP
  WHERE ID = 4;
+
+-- 한페이지만 확인
+SELECT ID, TITLE, CONTENT, STATUS
+  FROM MEMO
+ WHERE DEL_YN = 'N'
+ ORDER BY ID
+ LIMIT 5 OFFSET 0;
+
+-- 다음페이지 확
+SELECT ID, TITLE, CONTENT, STATUS
+  FROM MEMO
+ WHERE DEL_YN = 'N'
+ ORDER BY ID
+ LIMIT 5 OFFSET 5;

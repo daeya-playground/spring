@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.playground.service.MemoService;
+import kr.playground.vo.MemoPageVO;
 import kr.playground.vo.MemoVO;
 
 @RestController
@@ -25,8 +26,8 @@ public class MemoApiController {
     private MemoService memoService;
 
     @GetMapping
-    public List<MemoVO> list(@RequestParam(required = false) String status) {
-        return memoService.selectMemoList(status);
+    public MemoPageVO list(@RequestParam(required = false) String status, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size) {
+        return memoService.selectMemoPage(status, page, size);
     }
     
     @PostMapping

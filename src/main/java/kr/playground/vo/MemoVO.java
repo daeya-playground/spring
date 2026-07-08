@@ -9,6 +9,9 @@ public class MemoVO {
 	private String updatedAt;
 	private String delYn;
 	
+	private int size;
+	private int offset;
+	
 	public int getId() { return id; }
 	public void setId(int id) { this.id = id; }
 	
@@ -29,4 +32,10 @@ public class MemoVO {
 	
 	public String getDelYn() { return delYn; }
 	public void setDelYn(String delYn) { this.delYn = delYn; }
+	
+	public int getSize() {return size;}
+	public void setSize(int size) {this.size = size;}
+	
+	public int getOffset() {return offset;}
+	public void setOffset(int offset) {this.offset = offset;}
 }
