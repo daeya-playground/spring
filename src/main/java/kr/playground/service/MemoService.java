@@ -16,9 +16,10 @@ public class MemoService {
     @Resource(name = "memoMapper")
     private MemoMapper memoMapper;
 
-    public MemoPageVO selectMemoPage(String status, int page, int size) {
+    public MemoPageVO selectMemoPage(String status, String keyword, int page, int size) {
     	MemoVO param = new MemoVO();
         param.setStatus(status);
+        param.setKeyword(keyword);
         param.setSize(size);
         param.setOffset((page - 1) * size);
         

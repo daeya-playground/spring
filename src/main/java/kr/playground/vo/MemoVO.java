@@ -9,6 +9,8 @@ public class MemoVO {
 	private String updatedAt;
 	private String delYn;
 	
+	private String keyword;
+
 	private int size;
 	private int offset;
 	
@@ -33,6 +35,9 @@ public class MemoVO {
 	public String getDelYn() { return delYn; }
 	public void setDelYn(String delYn) { this.delYn = delYn; }
 	
+	public String getKeyword() { return keyword; }
+	public void setKeyword(String keyword) { this.keyword = keyword; }
+
 	public int getSize() {return size;}
 	public void setSize(int size) {this.size = size;}
 	

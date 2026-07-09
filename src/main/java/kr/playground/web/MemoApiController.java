@@ -1,7 +1,5 @@
 package kr.playground.web;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,8 +24,12 @@ public class MemoApiController {
     private MemoService memoService;
 
     @GetMapping
-    public MemoPageVO list(@RequestParam(required = false) String status, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size) {
-        return memoService.selectMemoPage(status, page, size);
+    public MemoPageVO list(
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String keyword,
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "5") int size) {
+        return memoService.selectMemoPage(status, keyword, page, size);
     }
     
     @PostMapping
