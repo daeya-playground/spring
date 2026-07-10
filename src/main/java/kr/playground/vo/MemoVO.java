@@ -10,6 +10,8 @@ public class MemoVO {
 	private String delYn;
 	
 	private String keyword;
+	private String sort;
+	private String order;
 
 	private int size;
 	private int offset;
@@ -37,6 +39,12 @@ public class MemoVO {
 	
 	public String getKeyword() { return keyword; }
 	public void setKeyword(String keyword) { this.keyword = keyword; }
+
+	public String getSort() { return sort; }
+	public void setSort(String sort) { this.sort = sort; }
+
+	public String getOrder() { return order; }
+	public void setOrder(String order) { this.order = order; }
 
 	public int getSize() {return size;}
 	public void setSize(int size) {this.size = size;}

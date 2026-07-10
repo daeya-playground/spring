@@ -20,7 +20,15 @@
         	AND (TITLE LIKE CONCAT('%', #{keyword}, '%')
         	  OR CONTENT LIKE CONCAT('%', #{keyword}, '%'))
         </if>
-        ORDER BY ID
+        ORDER BY
+        <choose>
+            <when test="sort == 'createdAt'">CREATED_AT</when>
+            <otherwise>ID</otherwise>
+        </choose>
+        <choose>
+            <when test="order == 'desc'">DESC</when>
+            <otherwise>ASC</otherwise>
+        </choose>
         LIMIT #{size} OFFSET #{offset}
     </select>
 

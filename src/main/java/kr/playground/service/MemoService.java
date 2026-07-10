@@ -16,10 +16,12 @@ public class MemoService {
     @Resource(name = "memoMapper")
     private MemoMapper memoMapper;
 
-    public MemoPageVO selectMemoPage(String status, String keyword, int page, int size) {
+    public MemoPageVO selectMemoPage(String status, String keyword, String sort, String order, int page, int size) {
     	MemoVO param = new MemoVO();
         param.setStatus(status);
         param.setKeyword(keyword);
+        param.setSort(resolveSort(sort));
+        param.setOrder(resolveOrder(order));
         param.setSize(size);
         param.setOffset((page - 1) * size);
         
@@ -32,6 +34,14 @@ public class MemoService {
         result.setPage(page);
         result.setSize(size);
         return result;        
+    }
+
+    private String resolveSort(String sort) {
+        return "createdAt".equals(sort) ? "createdAt" : "id";
+    }
+
+    private String resolveOrder(String order) {
+        return "desc".equalsIgnoreCase(order) ? "desc" : "asc";
     }
     
     public void insertMemo(String title, String content, String status) {

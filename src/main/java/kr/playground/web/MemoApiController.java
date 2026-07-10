@@ -27,9 +27,11 @@ public class MemoApiController {
     public MemoPageVO list(
             @RequestParam(required = false) String status,
             @RequestParam(required = false) String keyword,
+            @RequestParam(defaultValue = "id") String sort,
+            @RequestParam(defaultValue = "asc") String order,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "5") int size) {
-        return memoService.selectMemoPage(status, keyword, page, size);
+        return memoService.selectMemoPage(status, keyword, sort, order, page, size);
     }
     
     @PostMapping
