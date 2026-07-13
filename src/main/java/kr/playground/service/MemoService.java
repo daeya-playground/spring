@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.playground.exception.MemoValidationException;
 import kr.playground.mapper.MemoMapper;
 import kr.playground.vo.MemoVO;
 import kr.playground.vo.MemoPageVO;
@@ -45,6 +46,7 @@ public class MemoService {
     }
     
     public void insertMemo(String title, String content, String status) {
+        validateTitle(title);
         MemoVO memo = new MemoVO();
     	memo.setTitle(title);
     	memo.setContent(content);
@@ -53,7 +55,8 @@ public class MemoService {
     }
     
     public void updateMemo(int id, String title, String content, String status) {
-    	MemoVO memo = new MemoVO();
+        validateTitle(title);
+        MemoVO memo = new MemoVO();
     	memo.setId(id);
     	memo.setTitle(title);
     	memo.setContent(content);
@@ -63,5 +66,11 @@ public class MemoService {
     
     public void deleteMemo(int id) {
     	memoMapper.deleteMemo(id);
+    }
+
+    private void validateTitle(String title) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new MemoValidationException("title은 필수입니다");
+        }
     }
 }

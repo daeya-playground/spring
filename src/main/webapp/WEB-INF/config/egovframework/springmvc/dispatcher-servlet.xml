@@ -16,6 +16,8 @@
     <context:component-scan base-package="kr">
         <context:include-filter type="annotation"
             expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation"
+            expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
     <!-- return "playground/playground" → /WEB-INF/jsp/kr/playground/playground.jsp -->
