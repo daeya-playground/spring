@@ -33,7 +33,12 @@ public class MemoApiController {
             @RequestParam(defaultValue = "5") int size) {
         return memoService.selectMemoPage(status, keyword, sort, order, page, size);
     }
-    
+
+    @GetMapping("/{id}")
+    public MemoVO get(@PathVariable int id) {
+        return memoService.selectMemo(id);
+    }
+
     @PostMapping
     public void insert (@RequestBody MemoVO memo){
     	memoService.insertMemo(memo.getTitle(), memo.getContent(), memo.getStatus());

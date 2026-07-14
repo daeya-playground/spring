@@ -11,6 +11,7 @@ public interface MemoMapper {
 	
 	List<MemoVO> selectMemoList(MemoVO param);
 	int selectMemoCount(MemoVO Param);
+	MemoVO selectMemoById(int id);
     void insertMemo(MemoVO param);
     void updateMemo(MemoVO param);
     void deleteMemo(int id);

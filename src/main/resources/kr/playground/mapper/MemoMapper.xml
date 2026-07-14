@@ -44,8 +44,20 @@
 	        	  OR CONTENT LIKE CONCAT('%', #{keyword}, '%'))
 	        </if>
 	</select>
-    
-    
+
+    <select id="selectMemoById" parameterType="int" resultType="MemoVO">
+        SELECT ID         AS "id"
+             , TITLE      AS "title"
+             , CONTENT    AS "content"
+             , STATUS     AS "status"
+             , CREATED_AT AS "createdAt"
+             , UPDATED_AT AS "updatedAt"
+             , DEL_YN     AS "delYn"
+        FROM MEMO
+        WHERE ID = #{id}
+          AND DEL_YN = 'N'
+    </select>
+
     <insert id="insertMemo" parameterType="MemoVO">
     	INSERT INTO MEMO (ID, TITLE, CONTENT, STATUS)
     	VALUES (

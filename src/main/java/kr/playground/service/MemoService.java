@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.playground.exception.MemoNotFoundException;
 import kr.playground.exception.MemoValidationException;
 import kr.playground.mapper.MemoMapper;
 import kr.playground.vo.MemoVO;
@@ -44,7 +45,15 @@ public class MemoService {
     private String resolveOrder(String order) {
         return "desc".equalsIgnoreCase(order) ? "desc" : "asc";
     }
-    
+
+    public MemoVO selectMemo(int id) {
+        MemoVO memo = memoMapper.selectMemoById(id);
+        if (memo == null) {
+            throw new MemoNotFoundException("메모를 찾을 수 없습니다");
+        }
+        return memo;
+    }
+
     public void insertMemo(String title, String content, String status) {
         validateTitle(title);
         MemoVO memo = new MemoVO();
