@@ -1,5 +1,7 @@
 package kr.playground.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class MemoVO {
 	private int id;
 	private String title;
@@ -8,12 +10,17 @@ public class MemoVO {
 	private String createdAt;
 	private String updatedAt;
 	private String delYn;
-	
-	private String keyword;
-	private String sort;
-	private String order;
 
+	/** 조회 조건용 — API 응답 JSON에 안 나감 */
+	@JsonIgnore
+	private String keyword;
+	@JsonIgnore
+	private String sort;
+	@JsonIgnore
+	private String order;
+	@JsonIgnore
 	private int size;
+	@JsonIgnore
 	private int offset;
 	
 	public int getId() { return id; }
