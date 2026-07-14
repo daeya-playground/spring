@@ -38,14 +38,6 @@ public class MemoService {
         return result;        
     }
 
-    private String resolveSort(String sort) {
-        return "createdAt".equals(sort) ? "createdAt" : "id";
-    }
-
-    private String resolveOrder(String order) {
-        return "desc".equalsIgnoreCase(order) ? "desc" : "asc";
-    }
-
     public MemoVO selectMemo(int id) {
         MemoVO memo = memoMapper.selectMemoById(id);
         if (memo == null) {
@@ -76,10 +68,19 @@ public class MemoService {
     public void deleteMemo(int id) {
     	memoMapper.deleteMemo(id);
     }
+    
 
     private void validateTitle(String title) {
         if (title == null || title.trim().isEmpty()) {
             throw new MemoValidationException("title은 필수입니다");
         }
+    }
+
+    private String resolveSort(String sort) {
+        return "createdAt".equals(sort) ? "createdAt" : "id";
+    }
+
+    private String resolveOrder(String order) {
+        return "desc".equalsIgnoreCase(order) ? "desc" : "asc";
     }
 }
