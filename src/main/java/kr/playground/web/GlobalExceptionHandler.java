@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import kr.playground.exception.MemoNotFoundException;
-import kr.playground.exception.MemoValidationException;
+import kr.playground.exception.BadRequestException;
+import kr.playground.exception.NotFoundException;
 
 @RestControllerAdvice
-public class MemoApiExceptionHandler {
+public class GlobalExceptionHandler {
 
-    @ExceptionHandler(MemoValidationException.class)
+    @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleValidation(MemoValidationException e) {
+    public Map<String, String> handleBadRequest(BadRequestException e) {
         Map<String, String> error = new HashMap<>();
         error.put("message", e.getMessage());
         return error;
     }
 
-    @ExceptionHandler(MemoNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> handleNotFound(MemoNotFoundException e) {
+    public Map<String, String> handleNotFound(NotFoundException e) {
         Map<String, String> error = new HashMap<>();
         error.put("message", e.getMessage());
         return error;
