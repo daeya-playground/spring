@@ -47,7 +47,6 @@ public class MemoService {
     }
 
     public void insertMemo(String title, String content, String status) {
-        validateTitle(title);
         MemoVO memo = new MemoVO();
     	memo.setTitle(title);
     	memo.setContent(content);
@@ -56,7 +55,6 @@ public class MemoService {
     }
     
     public void updateMemo(int id, String title, String content, String status) {
-        validateTitle(title);
         MemoVO memo = new MemoVO();
     	memo.setId(id);
     	memo.setTitle(title);
@@ -67,13 +65,6 @@ public class MemoService {
     
     public void deleteMemo(int id) {
     	memoMapper.deleteMemo(id);
-    }
-    
-
-    private void validateTitle(String title) {
-        if (title == null || title.trim().isEmpty()) {
-            throw new ApiException(HttpStatus.BAD_REQUEST, "title은 필수입니다");
-        }
     }
 
     private String resolveSort(String sort) {

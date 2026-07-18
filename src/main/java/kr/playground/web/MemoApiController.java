@@ -1,6 +1,7 @@
 package kr.playground.web;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.playground.dto.MemoRequest;
 import kr.playground.service.MemoService;
 import kr.playground.vo.MemoPageVO;
 import kr.playground.vo.MemoVO;
@@ -40,17 +42,17 @@ public class MemoApiController {
     }
 
     @PostMapping
-    public void insert (@RequestBody MemoVO memo){
-    	memoService.insertMemo(memo.getTitle(), memo.getContent(), memo.getStatus());
+    public void insert(@Valid @RequestBody MemoRequest request) {
+        memoService.insertMemo(request.getTitle(), request.getContent(), request.getStatus());
     }
-    
+
     @PutMapping("/{id}")
-    public void update (@PathVariable int id, @RequestBody MemoVO memo) {
-    	memoService.updateMemo(id, memo.getTitle(), memo.getContent(), memo.getStatus());
+    public void update(@PathVariable int id, @Valid @RequestBody MemoRequest request) {
+        memoService.updateMemo(id, request.getTitle(), request.getContent(), request.getStatus());
     }
-    
+
     @DeleteMapping("/{id}")
-    public void delete (@PathVariable int id) {
-    	memoService.deleteMemo(id);
+    public void delete(@PathVariable int id) {
+        memoService.deleteMemo(id);
     }
 }
