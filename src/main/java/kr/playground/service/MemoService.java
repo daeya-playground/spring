@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import kr.playground.exception.BadRequestException;
-import kr.playground.exception.NotFoundException;
+import kr.playground.exception.ApiException;
 import kr.playground.mapper.MemoMapper;
 import kr.playground.vo.MemoVO;
 import kr.playground.vo.MemoPageVO;
@@ -41,7 +41,7 @@ public class MemoService {
     public MemoVO selectMemo(int id) {
         MemoVO memo = memoMapper.selectMemoById(id);
         if (memo == null) {
-            throw new NotFoundException("메모를 찾을 수 없습니다");
+            throw new ApiException(HttpStatus.NOT_FOUND, "메모를 찾을 수 없습니다");
         }
         return memo;
     }
@@ -72,7 +72,7 @@ public class MemoService {
 
     private void validateTitle(String title) {
         if (title == null || title.trim().isEmpty()) {
-            throw new BadRequestException("title은 필수입니다");
+            throw new ApiException(HttpStatus.BAD_REQUEST, "title은 필수입니다");
         }
     }
 
