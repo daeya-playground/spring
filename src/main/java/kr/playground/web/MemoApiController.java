@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.playground.dto.MemoRequest;
+import kr.playground.dto.MemoRequestDto;
 import kr.playground.service.MemoService;
 import kr.playground.vo.MemoPageVO;
 import kr.playground.vo.MemoVO;
@@ -42,12 +42,12 @@ public class MemoApiController {
     }
 
     @PostMapping
-    public void insert(@Valid @RequestBody MemoRequest request) {
+    public void insert(@Valid @RequestBody MemoRequestDto request) {
         memoService.insertMemo(request.getTitle(), request.getContent(), request.getStatus());
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable int id, @Valid @RequestBody MemoRequest request) {
+    public void update(@PathVariable int id, @Valid @RequestBody MemoRequestDto request) {
         memoService.updateMemo(id, request.getTitle(), request.getContent(), request.getStatus());
     }
 

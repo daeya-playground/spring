@@ -3,7 +3,7 @@ package kr.playground.dto;
 import org.hibernate.validator.constraints.NotBlank;
 
 /** create / update 요청 body 전용 (조회 조건 필드 없음) */
-public class MemoRequest {
+public class MemoRequestDto {
 
     @NotBlank(message = "title은 필수입니다")
     private String title;
